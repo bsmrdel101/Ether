@@ -67,5 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Ether.slnx"
+    "dotnet.defaultSolution": "Ether.slnx",
+    "workbench.colorTheme": "Dark+"
 }
