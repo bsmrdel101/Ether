@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 193068567977189108}
   - component: {fileID: 7369690301706166166}
   - component: {fileID: 1459431400909367330}
-  - component: {fileID: 2621574803714241937}
+  - component: {fileID: 2940929857925381326}
   - component: {fileID: 3601819099381861235}
   - component: {fileID: 3129931057896121374}
   - component: {fileID: 3716642198150126813}
+  - component: {fileID: -2318803458098210123}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -95,8 +96,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &2621574803714241937
-CapsuleCollider:
+--- !u!143 &2940929857925381326
+CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -110,13 +111,15 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
+  serializedVersion: 3
   m_Height: 2
-  m_Direction: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3601819099381861235
 MonoBehaviour:
@@ -130,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3767553900
+  GlobalObjectIdHash: 3326821126
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -204,6 +207,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   ShowTopMostFoldoutHeaderGroup: 1
   _playerCamObject: {fileID: 8960563127769741025}
+--- !u!114 &-2318803458098210123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5780562715736726188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b8d218ff8914fffb89cbd0d87d2788, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  _playerSpeed: 5
+  _jumpHeight: 1.5
+  _gravityValue: -9.81
+  _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _controller: {fileID: 2940929857925381326}
 --- !u!1 &8960563127769741025
 GameObject:
   m_ObjectHideFlags: 0
