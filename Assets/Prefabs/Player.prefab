@@ -171,7 +171,7 @@ MonoBehaviour:
   RotationMaxInterpolationTime: 0.1
   ScaleLerpSmoothing: 1
   ScaleMaxInterpolationTime: 0.1
-  AuthorityMode: 0
+  AuthorityMode: 1
   TickSyncChildren: 0
   UseUnreliableDeltas: 0
   SyncPositionX: 1
@@ -219,12 +219,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b8d218ff8914fffb89cbd0d87d2788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  _playerSpeed: 5
+  ShowTopMostFoldoutHeaderGroup: 1
+  _playerSpeed: 14
   _jumpHeight: 1.5
-  _gravityValue: -9.81
-  _moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  _jumpAction: {fileID: -2099379676528639254, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _gravityValue: -24
   _controller: {fileID: 2940929857925381326}
+  _camPos: {fileID: 2578013181121541184}
 --- !u!1 &8960563127769741025
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 7059166743398849185}
   - component: {fileID: 1320143433872475467}
   - component: {fileID: 3761028130332508189}
+  - component: {fileID: 3847557541667637968}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -362,3 +363,17 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &3847557541667637968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960563127769741025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e0bf3d60bb62fc15b7b5564011f5364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  sensitivity: 0.1
+  player: {fileID: 193068567977189108}

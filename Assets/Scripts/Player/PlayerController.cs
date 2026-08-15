@@ -7,6 +7,12 @@ public class PlayerController : NetworkBehaviour
   [SerializeField] private GameObject _playerCamObject;
 
 
+  private void Start()
+  {
+    Cursor.visible = false;
+    Cursor.lockState = CursorLockMode.Locked;
+  }
+
   public override void OnNetworkSpawn()
   {
     if (!IsOwner) return;

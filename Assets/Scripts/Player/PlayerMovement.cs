@@ -1,40 +1,22 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Unity.Netcode;
 
 public class PlayerMovement : NetworkBehaviour
 {
   [Header("Movement")]
-  [SerializeField] private float _playerSpeed = 5.0f;
+  [SerializeField] private float _playerSpeed = 14f;
   [SerializeField] private float _jumpHeight = 1.5f;
-  [SerializeField] private float _gravityValue = -9.81f;
-
-  [Header("Input Actions")]
-  [SerializeField] private InputActionReference _moveAction;
-  [SerializeField] private InputActionReference _jumpAction;
+  [SerializeField] private float _gravityValue = -24f;
 
   [Header("References")]
   [SerializeField] private CharacterController _controller;
+  [SerializeField] private Transform _camPos;
   private Vector3 _playerVelocity;
 
 
   public override void OnNetworkSpawn()
   {
-    if (!IsOwner)
-    {
-      enabled = false;
-      return;
-    }
-
-    _moveAction.action.Enable();
-    _jumpAction.action.Enable();
-  }
-
-  public override void OnNetworkDespawn()
-  {
-    // if (!IsOwner) return;
-    // _moveAction.action.Disable();
-    // _jumpAction.action.Disable();
+    if (!IsOwner) enabled = false;
   }
 
   private void Update()
@@ -46,8 +28,8 @@ public class PlayerMovement : NetworkBehaviour
 
   private Vector3 GetMovement()
   {
-    Vector2 input = _moveAction.action.ReadValue<Vector2>();
-    Vector3 movement = (transform.right * input.x) + (transform.forward * input.y);
+    Vector2 input = Input.Move.ReadValue<Vector2>();
+    Vector3 movement = (_camPos.right * input.x) + (_camPos.forward * input.y);
     return Vector3.ClampMagnitude(movement, 1f);
   }
 
@@ -64,7 +46,7 @@ public class PlayerMovement : NetworkBehaviour
       _playerVelocity.y = -2f;
     }
 
-    if (_jumpAction.action.triggered && _controller.isGrounded)
+    if (Input.Jump.IsPressed() && _controller.isGrounded)
     {
       _playerVelocity.y = Mathf.Sqrt(_jumpHeight * -2.0f * _gravityValue);
     }
